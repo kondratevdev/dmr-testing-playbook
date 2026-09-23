@@ -14,7 +14,8 @@ keywords = [
 license = "MIT"
 requires-python = ">=3.13"
 dependencies = [
-  "django-modern-rest[openapi]>=0.15,<0.16",
+  "django-modern-rest[attrs,openapi]>=0.15,<0.16",
+  "punq>=0.8,<1",
 ]
 
 [dependency-groups]
@@ -59,9 +60,15 @@ docstring-code-format = true
 [tool.ruff.lint.per-file-ignores]
 # Django settings are declarative configuration.
 "playbook/server/settings.py" = [ "D100", "D101", "RUF012", "S105" ]
+# Django-generated migrations contain mutable class attributes by design.
+"playbook/server/apps/*/migrations/*.py" = [ "D101", "E501", "RUF012"]
+# Django model metadata is declarative and uses class-level values.
+"playbook/server/apps/*/models.py" = [ "RUF012" ]
 # Standard Django entry points need imports and execution at module scope.
 "playbook/manage.py" = [ "PLC0415", "S104", "T201" ]
 "playbook/server/wsgi.py" = [ "E402" ]
+# Lazy imports keep the dependency bootstrap independent from applications.
+"playbook/server/implemented.py" = [ "PLC0415", "SLF001" ]
 # Tests intentionally use assertions and have a more compact style.
 "tests/**/*.py" = [ "D", "S101" ]
 
@@ -149,6 +156,7 @@ pydocstyle.convention = "google"
 [tool.mypy]
 # Mypy configuration:
 # https://mypy.readthedocs.io/en/latest/config_file.html
+mypy_path = ["playbook"]
 warn_unreachable = true
 enable_error_code = [
   "deprecated",
@@ -167,6 +175,7 @@ extra_checks = true
 strict_equality_for_none = true
 strict = true
 plugins = [
+  "mypy_django_plugin.main",
   "pydantic.mypy",
 ]
 

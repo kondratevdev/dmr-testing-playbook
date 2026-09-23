@@ -2,7 +2,10 @@ from dmr.openapi import OpenAPIConfig, build_schema
 from dmr.openapi.views import OpenAPIJsonView, SwaggerView
 from dmr.routing import Router, path
 
+from server.apps.tasks.api import urls as task_urls
+
 router = Router(prefix='api/')
+router.include(task_urls.router, namespace='tasks')
 
 schema = build_schema(
     router,
