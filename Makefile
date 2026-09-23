@@ -26,7 +26,7 @@ type-check: ## Run Mypy
 
 test: ## Run Django system checks and pytest suite
 	cd playbook && uv run python manage.py check
-	uv run pytest
+	cd playbook && uv run pytest
 
 package: ## Validate the lock file and installed dependencies
 	uv lock --check

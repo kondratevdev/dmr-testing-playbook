@@ -21,6 +21,7 @@ dependencies = [
 [dependency-groups]
 dev = [
   "covdefaults>=2.3,<3",
+  "django-coverage-plugin>=3.1",
   "django-stubs[compatible-mypy]>=6.1,<6.2",
   "mypy>=2.3",
   "pytest>=9,<10",
@@ -28,6 +29,8 @@ dev = [
   "pytest-django>=4.12,<4.15",
   "pytest-timeout>=2.4,<3",
   "ruff>=0.16,<0.17",
+  "schemathesis>=4.21,<5",
+  "tracecov>=0.23",
   "wemake-python-styleguide[mcp]>=1.8,<2",
 ]
 
@@ -186,27 +189,75 @@ django_settings_module = "server.settings"
 
 
 [tool.pytest.ini_options]
-# pytest config: https://docs.pytest.org/en/latest/reference/customize.html
-pythonpath = [ "playbook" ]
-testpaths = [ "tests" ]
+# pytest configuration:
+# https://docs.pytest.org/en/stable/customize.html
+
+# pytest-django configuration:
+# https://pytest-django.readthedocs.io/en/latest/
+DJANGO_SETTINGS_MODULE = "server.settings"
+
+# Timeout for tests, so they can not take longer
+# than this amount of seconds.
+# You should adjust this value to be as low as possible.
+# Configuration:
+# https://pypi.org/project/pytest-timeout/
+timeout = 5
+
+# Strict `@xfail` by default:
+xfail_strict = true
+
+# Directories that are not visited by pytest collector:
+norecursedirs = [
+  "*.egg",
+  ".eggs",
+  "dist",
+  "build",
+  "docs",
+  ".tox",
+  ".git",
+  "__pycache__",
+  ".hypothesis",
+]
+
+# You will need to measure your tests speed with `-n auto` and without it,
+# so you can see whether it gives you any performance gain, or just gives
+# you an overhead. See `docs/template/development-process.rst`.
 addopts = [
-  "--strict-config",
   "--strict-markers",
+  "--strict-config",
+  "--doctest-modules",
+  "--fail-on-template-vars",
+  # Output:
   "--tb=short",
-  "--cov=playbook/server",
+  # Coverage:
+  "--cov=server",
   "--cov=tests",
+  "--cov-branch",
   "--cov-report=term-missing:skip-covered",
   "--cov-report=html",
   "--cov-report=xml",
-  "--cov-branch",
+  "--cov-fail-under=100",
+  # Tracecov:
+  "--tracecov-format=text,html,markdown",
+  "--tracecov-fail-under-operations=100",
+  "--tracecov-fail-under-examples=100",
+  "--tracecov-fail-under-parameters=100",
+  "--tracecov-fail-under-keywords=100",
+  # Framework-level responses like 406 and 422 are documented in OpenAPI,
+  # but they are not always reachable through regular Schemathesis input generation.
+  "--tracecov-fail-under-responses=100",
 ]
-xfail_strict = true
-filterwarnings = [ "error" ]
-DJANGO_SETTINGS_MODULE = "server.settings"
-timeout = 5
-timeout_method = "thread"
+
+# Fail on warnings:
+filterwarnings = ["error"]
 
 
 [tool.coverage.run]
-# Covdefaults: https://pypi.org/project/covdefaults
-plugins = [ "covdefaults" ]
+# Coverage configuration:
+# https://coverage.readthedocs.io/en/latest/config.html
+plugins = [
+  # Docs: https://github.com/nedbat/django_coverage_plugin
+  "django_coverage_plugin",
+  # Docs: https://pypi.org/project/covdefaults
+  "covdefaults",
+]
