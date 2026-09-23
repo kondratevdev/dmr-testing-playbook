@@ -12,7 +12,7 @@ schema = build_schema(
         description=(
             'Real-world testing patterns, tools, and practices '
             'for django-modern-rest'
-        )
+        ),
     ),
 )
 

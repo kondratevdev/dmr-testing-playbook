@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-playbook-only'  # noqa: S105
+SECRET_KEY = 'django-insecure-playbook-only'
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 

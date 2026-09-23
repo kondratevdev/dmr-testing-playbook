@@ -21,6 +21,8 @@ dependencies = [
 dev = [
   "django-stubs[compatible-mypy]>=6.1,<6.2",
   "mypy>=2.3",
+  "ruff>=0.16,<0.17",
+  "wemake-python-styleguide[mcp]>=1.8,<2",
 ]
 
 [[project.authors]]
@@ -35,6 +37,108 @@ awesome-django-modern-rest = "https://github.com/kondratevdev/awesome-django-mod
 [tool.uv]
 # This repository is a runnable example project, not a distributable package.
 package = false
+
+
+[tool.ruff]
+# Ruff config: https://docs.astral.sh/ruff/settings
+target-version = "py313"
+line-length = 80
+preview = true
+fix = true
+output-prefer-rule-codes = true
+
+[tool.ruff.format]
+quote-style = "single"
+docstring-code-format = true
+
+[tool.ruff.lint.per-file-ignores]
+# Django settings are declarative configuration.
+"playbook/server/settings.py" = [ "D100", "D101", "RUF012", "S105" ]
+# Standard Django entry points need imports and execution at module scope.
+"playbook/manage.py" = [ "PLC0415", "S104", "T201" ]
+"playbook/server/wsgi.py" = [ "E402" ]
+# Tests intentionally use assertions and have a more compact style.
+"tests/**/*.py" = [ "D", "S101" ]
+
+[tool.ruff.lint]
+select = [
+  "A",     # flake8-builtins
+  "ASYNC", # flake8-async
+  "B",     # flake8-bugbear
+  "C4",    # flake8-comprehensions
+  "C90",   # mccabe
+  "COM",   # flake8-commas
+  "D",     # pydocstyle
+  "DJ",    # flake8-django
+  "DTZ",   # flake8-datetimez
+  "E",     # pycodestyle
+  "ERA",   # flake8-eradicate
+  "EXE",   # flake8-executable
+  "F",     # pyflakes
+  "FBT",   # flake8-boolean-trap
+  "FLY",   # pyflint
+  "FURB",  # refurb
+  "G",     # flake8-logging-format
+  "I",     # isort
+  "ICN",   # flake8-import-conventions
+  "INT",   # flake8-gettext
+  "ISC",   # flake8-implicit-str-concat
+  "LOG",   # flake8-logging
+  "N",     # pep8-naming
+  "PERF",  # perflint
+  "PIE",   # flake8-pie
+  "PL",    # pylint
+  "PT",    # flake8-pytest-style
+  "PTH",   # flake8-use-pathlib
+  "Q",     # flake8-quotes
+  "RET",   # flake8-return
+  "RSE",   # flake8-raise
+  "RUF",   # ruff
+  "S",     # flake8-bandit
+  "SIM",   # flake8-simplify
+  "SLF",   # flake8-self
+  "SLOT",  # flake8-slots
+  "T100",  # flake8-debugger
+  "TID",   # flake8-tidy-imports
+  "TRY",   # tryceratops
+  "UP",    # pyupgrade
+  "W",     # pycodestyle
+  "YTT",   # flake8-2020
+]
+ignore = [
+  "A005",     # allow to shadow stdlib and builtin module names
+  "ASYNC119", # `contextlib.aclosing` is not detected
+  "D100",
+  "D104",
+  "D106",
+  "D203",
+  "D212",
+  "D401",
+  "D404",
+  "D405",
+  "D418",
+  "D421",
+  "ISC001",   # implicit string concat conflicts with `ruff format`
+  "ISC003",   # prefer explicit string concat over implicit concat
+  "PLC0414",  # do not raise on `as` re-exports
+  "PLR09",    # WPS handles complexity separately
+  "PLR2004",  # do not report magic numbers
+  "PLR6301",  # do not require class/static methods when self is not used
+  "PLW2901",  # allow to redefine iteration targets in for loops
+  "RUF029",   # async API may intentionally omit `await`
+  "RUF067",   # WPS handles `__init__.py` logic better
+  "RUF105",   # keep old `# noqa` comments style
+  "RUF106",   # prefer old error codes
+  "RUF201",   # prefer error codes over verbose names
+  "TRY003",   # permit descriptive exception messages
+]
+external = [ "WPS" ]
+# Plugin configs:
+flake8-gettext.extend-function-names = [ "_" ]
+flake8-quotes.inline-quotes = "single"
+isort.known-first-party = [ "server" ]
+mccabe.max-complexity = 6
+pydocstyle.convention = "google"
 
 
 [tool.mypy]
