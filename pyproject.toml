@@ -1,0 +1,16 @@
+[project]
+name = "dmr-testing-playbook"
+version = "0.1.0"
+description = "Real-world testing patterns, tools, and practices for django-modern-rest"
+authors = [
+    {name = "Alexander Kondratev", email = "mail@kondratev.dev"}
+]
+license = "MIT"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
