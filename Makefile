@@ -24,9 +24,9 @@ lint: ## Run Ruff and WPS/Flake8
 type-check: ## Run Mypy
 	uv run python -m mypy .
 
-test: ## Run Django system checks and tests
+test: ## Run Django system checks and pytest suite
 	cd playbook && uv run python manage.py check
-	cd playbook && uv run python manage.py test
+	uv run pytest
 
 package: ## Validate the lock file and installed dependencies
 	uv lock --check

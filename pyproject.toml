@@ -19,8 +19,13 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+  "covdefaults>=2.3,<3",
   "django-stubs[compatible-mypy]>=6.1,<6.2",
   "mypy>=2.3",
+  "pytest>=9,<10",
+  "pytest-cov>=7,<8",
+  "pytest-django>=4.12,<4.15",
+  "pytest-timeout>=2.4,<3",
   "ruff>=0.16,<0.17",
   "wemake-python-styleguide[mcp]>=1.8,<2",
 ]
@@ -169,3 +174,30 @@ plugins = [
 [tool.django-stubs]
 # Docs: https://github.com/typeddjango/django-stubs
 django_settings_module = "server.settings"
+
+
+[tool.pytest.ini_options]
+# pytest config: https://docs.pytest.org/en/latest/reference/customize.html
+pythonpath = [ "playbook" ]
+testpaths = [ "tests" ]
+addopts = [
+  "--strict-config",
+  "--strict-markers",
+  "--tb=short",
+  "--cov=playbook/server",
+  "--cov=tests",
+  "--cov-report=term-missing:skip-covered",
+  "--cov-report=html",
+  "--cov-report=xml",
+  "--cov-branch",
+]
+xfail_strict = true
+filterwarnings = [ "error" ]
+DJANGO_SETTINGS_MODULE = "server.settings"
+timeout = 5
+timeout_method = "thread"
+
+
+[tool.coverage.run]
+# Covdefaults: https://pypi.org/project/covdefaults
+plugins = [ "covdefaults" ]
