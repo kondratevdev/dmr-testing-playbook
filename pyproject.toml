@@ -17,6 +17,12 @@ dependencies = [
   "django-modern-rest[openapi]>=0.15,<0.16",
 ]
 
+[dependency-groups]
+dev = [
+  "django-stubs[compatible-mypy]>=6.1,<6.2",
+  "mypy>=2.3",
+]
+
 [[project.authors]]
 name = "Alexander Kondratev"
 email = "mail@kondratev.dev"
@@ -24,7 +30,38 @@ email = "mail@kondratev.dev"
 [project.urls]
 GitHub = "https://github.com/kondratevdev/dmr-testing-playbook"
 django-modern-rest = "https://github.com/wemake-services/django-modern-rest"
+awesome-django-modern-rest = "https://github.com/kondratevdev/awesome-django-modern-rest"
 
 [tool.uv]
 # This repository is a runnable example project, not a distributable package.
 package = false
+
+
+[tool.mypy]
+# Mypy configuration:
+# https://mypy.readthedocs.io/en/latest/config_file.html
+warn_unreachable = true
+enable_error_code = [
+  "deprecated",
+  "exhaustive-match",
+  "explicit-override",
+  "ignore-without-code",
+  "possibly-undefined",
+  "redundant-expr",
+  "redundant-self",
+  "truthy-bool",
+  "truthy-iterable",
+  "unimported-reveal",
+  "unused-awaitable",
+]
+extra_checks = true
+strict_equality_for_none = true
+strict = true
+plugins = [
+  "pydantic.mypy",
+]
+
+
+[tool.django-stubs]
+# Docs: https://github.com/typeddjango/django-stubs
+django_settings_module = "server.settings"
