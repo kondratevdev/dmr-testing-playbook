@@ -10,3 +10,7 @@
 <p align="center">
   <em>Modern REST framework for Django with types and async support!</em>
 </p>
+
+This repository is a testing playbook for `django-modern-rest`.
+For a production-ready Django project structure and code-organization template,
+see [wemake-django-template](https://github.com/wemake-services/wemake-django-template).
