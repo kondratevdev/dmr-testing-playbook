@@ -4,6 +4,7 @@ from typing import Any
 
 import pytest
 import schemathesis as st
+from django.contrib.auth.models import User
 from django.urls import reverse
 from schemathesis.specs.openapi.schemas import OpenApiSchema
 from tracecov import CoverageMap
@@ -21,8 +22,11 @@ def _disable_logging() -> Iterator[None]:
 
 
 @pytest.fixture
-def api_schema(transactional_db: None) -> OpenApiSchema:
-    """Load the live OpenAPI schema through Django's WSGI application."""
+def api_schema(
+    transactional_db: None,
+    admin_user: User,
+) -> OpenApiSchema:
+    """Load the API schema after creating login credentials for auth."""
     return st.openapi.from_wsgi(reverse('openapi_json'), application)
 
 

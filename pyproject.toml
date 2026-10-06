@@ -14,7 +14,7 @@ keywords = [
 license = "MIT"
 requires-python = ">=3.13"
 dependencies = [
-  "django-modern-rest[attrs,openapi]>=0.15,<0.16",
+  "django-modern-rest[attrs,jwt,openapi]>=0.15,<0.16",
   "punq>=0.8,<1",
 ]
 

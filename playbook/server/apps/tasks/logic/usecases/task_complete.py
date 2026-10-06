@@ -3,7 +3,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, final
 
 import attrs
+from django.contrib.auth.models import User
 
+from server.apps.tasks.logic.exceptions import TaskAlreadyCompletedError
 from server.apps.tasks.logic.value_objects import TaskFullPayload
 
 if TYPE_CHECKING:
@@ -20,8 +22,12 @@ class CompleteTask:
     _mapper: mappers.TaskMapper
     _transaction: TransactionAtomic
 
-    def __call__(self, task_id: int) -> TaskFullPayload:
+    def __call__(self, task_id: int, owner: User) -> TaskFullPayload:
         """Complete and map a task."""
         with self._transaction():
-            task = self._repository.get(task_id, for_update=True)
-            return self._mapper(self._repository.complete(task))
+            task = self._repository.get(task_id, owner, for_update=True)
+
+            if task.is_completed:
+                raise TaskAlreadyCompletedError
+
+            return self._mapper.single(self._repository.complete(task))

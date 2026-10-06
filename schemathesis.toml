@@ -4,3 +4,8 @@ max-examples = 100
 
 # Postgres does not like it:
 allow-x00 = false
+
+[auth.dynamic.openapi.jwt]
+path = '/api/auth/token/'
+payload = { username = 'admin', password = 'password' }
+extract_selector = '/access_token'

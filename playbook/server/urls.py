@@ -4,9 +4,22 @@ from dmr.plugins.msgspec import MsgspecSerializer
 from dmr.routing import Router, build_404_handler, path
 
 from server.apps.tasks.api import urls as task_urls
+from server.apps.tasks.api.auth import ObtainTaskTokens
 
 router = Router(prefix='api/')
-router.include(task_urls.router, namespace='tasks')
+router.include(
+    task_urls.router,
+    namespace='tasks',
+)
+router.include(
+    Router(
+        'auth/',
+        [
+            path('token/', ObtainTaskTokens.as_view(), name='token'),
+        ],
+    ),
+    namespace='auth',
+)
 
 schema = build_schema(
     router,

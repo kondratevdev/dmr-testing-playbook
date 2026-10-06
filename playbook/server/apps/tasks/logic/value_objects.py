@@ -24,6 +24,13 @@ class TaskPath(msgspec.Struct):
 
 
 @final
+class TaskListQuery(msgspec.Struct):
+    """Optional filter for the current user's tasks."""
+
+    is_completed: bool | None = None
+
+
+@final
 class TaskFullPayload(TaskCreatePayload, kw_only=True):
     """Public representation of a persisted task."""
 

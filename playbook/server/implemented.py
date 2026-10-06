@@ -17,19 +17,25 @@ def _create_injector[Thing](
 def _inject_tasks(container: punq.Container) -> None:
     from server.apps.tasks.infra import mappers, repository
     from server.apps.tasks.logic.usecases import (
-        task_complete,
-        task_create,
-        task_get,
+        CompleteTask,
+        CreateTask,
+        GetTask,
+        ListTasks,
     )
     from server.common import transactions
 
     inject = _create_injector(container, locals())  # noqa: WPS421
+    # Common:
     container.register(transactions.TransactionAtomic)
+    # Repositores:
     container.register(repository.TaskRepository)
+    # Mappers:
     container.register(mappers.TaskMapper)
-    container.register(inject(task_create.CreateTask))
-    container.register(inject(task_get.GetTask))
-    container.register(inject(task_complete.CompleteTask))
+    # Usecases:
+    container.register(inject(CreateTask))
+    container.register(inject(GetTask))
+    container.register(inject(ListTasks))
+    container.register(inject(CompleteTask))
 
 
 def populate_dependencies(container: punq.Container) -> punq.Container:

@@ -538,6 +538,9 @@ attrs = [
     { name = "attrs" },
     { name = "msgspec" },
 ]
+jwt = [
+    { name = "pyjwt", extra = ["crypto"] },
+]
 openapi = [
     { name = "openapi-spec-validator" },
     { name = "polyfactory" },
@@ -582,7 +585,7 @@ name = "dmr-testing-playbook"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "django-modern-rest", extra = ["attrs", "openapi"] },
+    { name = "django-modern-rest", extra = ["attrs", "jwt", "openapi"] },
     { name = "punq" },
 ]
 
@@ -604,7 +607,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "django-modern-rest", extras = ["attrs", "openapi"], specifier = ">=0.15,<0.16" },
+    { name = "django-modern-rest", extras = ["attrs", "jwt", "openapi"], specifier = ">=0.15,<0.16" },
     { name = "punq", specifier = ">=0.8,<1" },
 ]
 

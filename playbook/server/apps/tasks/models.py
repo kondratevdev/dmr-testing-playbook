@@ -10,6 +10,11 @@ class Task(models.Model):
     """A task that can be completed exactly once."""
 
     title = models.CharField(max_length=TASK_TITLE_MAX_LENGTH)
+    owner = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+        related_name='tasks',
+    )
     description = models.TextField(blank=True)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

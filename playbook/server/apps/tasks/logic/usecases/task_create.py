@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, final
 
 import attrs
+from django.contrib.auth.models import User
 
 from server.apps.tasks.logic.value_objects import (
     TaskCreatePayload,
@@ -21,6 +22,10 @@ class CreateTask:
     _repository: repository.TaskRepository
     _mapper: mappers.TaskMapper
 
-    def __call__(self, payload: TaskCreatePayload) -> TaskFullPayload:
+    def __call__(
+        self,
+        payload: TaskCreatePayload,
+        owner: User,
+    ) -> TaskFullPayload:
         """Persist a task and map it to its public representation."""
-        return self._mapper(self._repository.create(payload))
+        return self._mapper.single(self._repository.create(payload, owner))

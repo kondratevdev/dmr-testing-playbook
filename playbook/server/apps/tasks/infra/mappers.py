@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from typing import final
 
 import attrs
@@ -11,8 +12,8 @@ from server.apps.tasks.models import Task
 class TaskMapper:
     """Map a ``Task`` Django model to its response representation."""
 
-    def __call__(self, task: Task) -> TaskFullPayload:
-        """Create a public representation of a task."""
+    def single(self, task: Task) -> TaskFullPayload:
+        """Map one task to its public representation."""
         return TaskFullPayload(
             id=task.pk,
             title=task.title,
@@ -21,3 +22,7 @@ class TaskMapper:
             created_at=task.created_at,
             completed_at=task.completed_at,
         )
+
+    def many(self, tasks: Iterable[Task]) -> list[TaskFullPayload]:
+        """Map a collection of tasks to public representations."""
+        return [self.single(task) for task in tasks]
