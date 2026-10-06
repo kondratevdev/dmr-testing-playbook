@@ -1,4 +1,4 @@
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 from typing import final
 
@@ -10,7 +10,7 @@ class TransactionAtomic:
     """Provide an atomic transaction as an injectable dependency."""
 
     @contextmanager
-    def __call__(self) -> Iterator[None]:
+    def __call__(self) -> Generator[None]:
         """Run the enclosed section in one database transaction."""
         with transaction.atomic():
             yield
