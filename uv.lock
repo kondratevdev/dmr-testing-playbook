@@ -1928,32 +1928,32 @@ wheels = [
 
 [[package]]
 name = "tracecov"
-version = "0.25.1"
+version = "0.25.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "tracecov-community" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3e/61/18dfe63699399d5f2bf769a7beac0a4575c4a673d76d3a772885af991f9b/tracecov-0.25.1.tar.gz", hash = "sha256:cf4351b8b396e5e7bd0fb49e98aad84f21c2dd8b662608f25a19636da5179376", size = 22189, upload-time = "2026-10-02T22:09:14.852Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ee/6f/fa597141e371097ea457df17b0b59e7a64d171e4559cbb975a5c295be3f0/tracecov-0.25.3.tar.gz", hash = "sha256:f9149be2d09640e42ca59f4a9c882f47aea6894f64300b3bcb18535321968105", size = 22265, upload-time = "2026-10-09T18:38:56.51Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a1/83/d2bd18a0741d933ae6d8cfd5d133838a5983d2ebad725c7f2609dddc9d84/tracecov-0.25.1-py3-none-any.whl", hash = "sha256:95dc7109c627526cce6f5f63a4a31bf836328004174848378a60a3512cfd9ed5", size = 29295, upload-time = "2026-10-02T22:09:13.97Z" },
+    { url = "https://files.pythonhosted.org/packages/5f/bc/95d439012063aead3fd59651c026db619015ab375e625d82fc0b0875185c/tracecov-0.25.3-py3-none-any.whl", hash = "sha256:197e43ad9439a945adab4d727a68b510019dab38f60e764ae42894f879b81931", size = 29401, upload-time = "2026-10-09T18:38:55.306Z" },
 ]
 
 [[package]]
 name = "tracecov-community"
-version = "0.25.1"
+version = "0.25.3"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/db/ad/b829fc83cc40da844054eb1ea60323d3fe92d25f0b23faa3d26f74d53821/tracecov_community-0.25.1-cp310-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:dc4ba5e9fd5cb3e692ec59ab11bc325b291b9ef9a7a148e2351e3f48915d65ad", size = 10702094, upload-time = "2026-10-02T22:20:14.244Z" },
-    { url = "https://files.pythonhosted.org/packages/3d/32/459ea9b5998597932c709525ebe19fb3fa25193769da519722ef065c0fa0/tracecov_community-0.25.1-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5f204d004134c41f198dbd31edacb2c1c7964333538624fc0a8f99b3dc54aba4", size = 5797933, upload-time = "2026-10-02T22:20:16.289Z" },
-    { url = "https://files.pythonhosted.org/packages/95/44/f13317926c89b86c80791a38e5554a8d4ed00c790e114ad22263bbc01e81/tracecov_community-0.25.1-cp310-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:f13dfb5f203bede795e03bdbb7eb132e842008462dd5929d8f3ef4dfdff6a168", size = 5336404, upload-time = "2026-10-02T22:20:17.815Z" },
-    { url = "https://files.pythonhosted.org/packages/35/0e/330e0e4e0a1018bfa4367e8fa75db0fa7d395404e44b0ab342671a8df0e0/tracecov_community-0.25.1-cp310-abi3-win_amd64.whl", hash = "sha256:b938894d63338798699e3fb04a4cc240245a703ffc8aabe9b3f0f56bac251254", size = 5955702, upload-time = "2026-10-02T22:20:19.153Z" },
-    { url = "https://files.pythonhosted.org/packages/d1/0e/3f3bab19a0a9e14da4533ce96d18343ee167b311c2856251ad4865adb205/tracecov_community-0.25.1-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:fd9cd883c5fdba924b91e25549767e4c5b7ff50cec6414238040185256a10fae", size = 5136365, upload-time = "2026-10-02T22:20:20.471Z" },
-    { url = "https://files.pythonhosted.org/packages/d1/46/b5382471a36b1480f658c7ae54f31195bb3c8ded3d55d745d72b13c2da06/tracecov_community-0.25.1-cp314-cp314t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0a1766a586a67f58849bb17b688e5cf11e79d0fe88ae7f0bd4e18bcef957ca3e", size = 5791562, upload-time = "2026-10-02T22:20:21.814Z" },
-    { url = "https://files.pythonhosted.org/packages/d7/12/8a4e7c939c17d81bf4e463286ff05979706873dd841408c7dd67345b76a8/tracecov_community-0.25.1-cp314-cp314t-manylinux_2_28_aarch64.whl", hash = "sha256:764c2a5d0fe75eb1ff95854fe8298d981991ead996d4ad30e9fcb0e99498a5a5", size = 5329531, upload-time = "2026-10-02T22:20:23.198Z" },
-    { url = "https://files.pythonhosted.org/packages/3e/0f/e5db3c5c1c096f3c07b6a4dbb937c671a8c28b9d122779957e531e1467fa/tracecov_community-0.25.1-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:3441f3bb0ceb504ca533871b9a09859770a1bf40ffd773b552eb6b99cddc9707", size = 5511013, upload-time = "2026-10-02T22:20:24.536Z" },
-    { url = "https://files.pythonhosted.org/packages/73/0c/aa701d30fdee15663d39f9d8831de0e624921f319493fc129b68eb938e69/tracecov_community-0.25.1-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:17be67d2aaf5a63007738830b25f84e44169619eb302f3f0f04a9493704fd681", size = 6020109, upload-time = "2026-10-02T22:20:25.929Z" },
-    { url = "https://files.pythonhosted.org/packages/6a/1b/77afcf783716fbfcb34447b71d7e20a88b62bd24e6aa0ed39f7e4ce58d24/tracecov_community-0.25.1-cp314-cp314t-win_amd64.whl", hash = "sha256:571589e713ddd6e618eb8a240aa4de7b00d8b727bee08a70315389a9411e23de", size = 5947038, upload-time = "2026-10-02T22:20:27.348Z" },
-    { url = "https://files.pythonhosted.org/packages/df/5d/8ab047cfaea8a254342db005ea0b7d4a229956e01d5b7bbe7044b8510c70/tracecov_community-0.25.1-py3-none-any.whl", hash = "sha256:941f8a36a35d896b8169035a69a297de0bd97d403aea6af04c8c65ff0b97bb64", size = 7360, upload-time = "2026-10-02T22:20:28.454Z" },
+    { url = "https://files.pythonhosted.org/packages/28/b0/5f5c925dc66f8448d8415de539176de33732ce292290b6f37b7e626ca90b/tracecov_community-0.25.3-cp310-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:bcf581fbd0bf581591a859ab24650abe8c989144eed3930d824fe859b25e9e47", size = 10793105, upload-time = "2026-10-09T19:04:03.072Z" },
+    { url = "https://files.pythonhosted.org/packages/52/83/12205f1651b33af4caa1282b13fd1ccdb149a341bc8e3d6d7574e4d1ea4a/tracecov_community-0.25.3-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4ef1a5a6f6a505b2acff60657c57ae939c2579338ef2051262be68d6cf890772", size = 5844864, upload-time = "2026-10-09T19:04:05.496Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/5a/08d6825f73887d6b392c267fea3708c69c190a09e93704516a67cc41d135/tracecov_community-0.25.3-cp310-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:f9be876a5e9bde6b1a1790804b5ecdedb301812f4f5847a70b1aa90d0bfe0b1b", size = 5380818, upload-time = "2026-10-09T19:04:06.986Z" },
+    { url = "https://files.pythonhosted.org/packages/64/b2/a2a8de7ca91349e51d2551ccc9519d1d584e61b6fe09e1767593584d9198/tracecov_community-0.25.3-cp310-abi3-win_amd64.whl", hash = "sha256:0e4c66c07dc390828da45f7a5458d758a89ccf1de8f1a46746b857ac2b5bcee0", size = 6019289, upload-time = "2026-10-09T19:04:08.581Z" },
+    { url = "https://files.pythonhosted.org/packages/77/93/8a5d4da04f49d3590f5f68ad7aec981ebdf45fa3aa6468c3d81219120baa/tracecov_community-0.25.3-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:1cec9d2e12a3d0d1c08814b9fc2fe8f733f3ba685b73e8e1469d34a78e28aefd", size = 5180397, upload-time = "2026-10-09T19:04:10.153Z" },
+    { url = "https://files.pythonhosted.org/packages/37/b8/1ae725641f2dbd2167263b01bfb9515c119cd1ccf9b78799d3b9d8c6379b/tracecov_community-0.25.3-cp314-cp314t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:759e4f4abae4347769cf47913457d6541010c12d1575bbdd94ef62f846050674", size = 5838968, upload-time = "2026-10-09T19:04:11.671Z" },
+    { url = "https://files.pythonhosted.org/packages/d7/4e/f28c23bc3e633d2ff64a42b8d21a2c0e897943994477a341bdfb1ab851ed/tracecov_community-0.25.3-cp314-cp314t-manylinux_2_28_aarch64.whl", hash = "sha256:edbb940c0ab5d398c2c6b3ebc80a56d48c9c552214fbb3a55e5936416b795f31", size = 5376091, upload-time = "2026-10-09T19:04:13.504Z" },
+    { url = "https://files.pythonhosted.org/packages/4c/b1/d0a702267f7275bf1a36ec70449782eb312baddb75f35f2152197d6f68e1/tracecov_community-0.25.3-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:bec065bcfd608b085878e3c3080039e3f5b34c1f4faf9cc913401767b2d01419", size = 5560754, upload-time = "2026-10-09T19:04:14.986Z" },
+    { url = "https://files.pythonhosted.org/packages/2e/dd/46a25d2fd7a9dd41e18e3732ba982f05d1abde7417f4c18674533b4e8d3a/tracecov_community-0.25.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:23e2cb1730fc1cbe8e3abf0681ee1e0048218aaa250a9da5fd0c06a4916a24a7", size = 6070163, upload-time = "2026-10-09T19:04:17.11Z" },
+    { url = "https://files.pythonhosted.org/packages/a1/15/066c25e449d6dfb63a1459472a9ef1210b3f1370b00be89a511c02092a77/tracecov_community-0.25.3-cp314-cp314t-win_amd64.whl", hash = "sha256:45ab3b98d18562b7a58e46a03a87180179f2851780fe5923496094875d71ebd4", size = 6005424, upload-time = "2026-10-09T19:04:18.79Z" },
+    { url = "https://files.pythonhosted.org/packages/4a/cb/caab09b87bbdc581907f83637f246ac58d1ecacb14e96a2c8958c896038c/tracecov_community-0.25.3-py3-none-any.whl", hash = "sha256:f5fde75ee1e0cb61ef3e98e783243b6141fb1aef709699903c9cfc4ceb065e5f", size = 7361, upload-time = "2026-10-09T19:04:20.26Z" },
 ]
 
 [[package]]
